@@ -13,9 +13,10 @@ public class MainMenu {
 
     UserController userController = new UserController();
     List<String> questions = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
 
     public void registerUser() {
-        Scanner sc = new Scanner(System.in);
+
 
         System.out.print("\nDigite o caminho para o arquivo .txt: ");
         String filePath = sc.nextLine();
@@ -43,6 +44,8 @@ public class MainMenu {
             System.out.print(questions.get(3) + " ");
             double height = sc.nextDouble();
 
+            sc.nextLine();
+
             userController.registerUser(name, email, age, height);
 
             int count = 1;
@@ -57,7 +60,7 @@ public class MainMenu {
                 System.out.println("\nUsuário cadastrado com sucesso!");
             }
         } catch (IOException e) {
-            System.out.println("Invalid directory. You need to enter a valid path for your file.");
+            System.out.println("Invalid input. You need to enter a valid path for your file.");
         }
     }
 
@@ -69,7 +72,12 @@ public class MainMenu {
         }
     }
 
-    public void searchUser() {}
+    public void searchUser() {
+        System.out.print("Digite o nome do usuário que desejas buscar: ");
+        String name = sc.nextLine();
+
+        userController.searchUser(name);
+    }
 
     public void registerQuestion() {}
 

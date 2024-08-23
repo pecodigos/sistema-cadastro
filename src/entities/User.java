@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class User {
 
     private String name;
@@ -53,4 +55,5 @@ public class User {
                 + ", 3 - " + age
                 + ", 4 - " + String.format("%.2f", height);
     }
+
 }
