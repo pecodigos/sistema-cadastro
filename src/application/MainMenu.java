@@ -1,10 +1,14 @@
 package application;
 
+import controllers.QuestionController;
 import controllers.UserController;
 import entities.User;
+import exceptions.InvalidInputException;
+import exceptions.InvalidPathException;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,13 +16,14 @@ public class MainMenu {
 
 
     UserController userController = new UserController();
+    QuestionController questionController = new QuestionController();
     List<String> questions = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     public void registerUser() {
 
 
-        System.out.print("\nDigite o caminho para o arquivo .txt: ");
+        System.out.print("\nDigite o caminho para o arquivo de texto: ");
         String filePath = sc.nextLine();
 
         File file = new File(filePath);
@@ -60,7 +65,7 @@ public class MainMenu {
                 System.out.println("\nUsuário cadastrado com sucesso!");
             }
         } catch (IOException e) {
-            System.out.println("Invalid input. You need to enter a valid path for your file.");
+            throw new InvalidInputException();
         }
     }
 
@@ -79,7 +84,22 @@ public class MainMenu {
         userController.searchUser(name);
     }
 
-    public void registerQuestion() {}
+    public void registerQuestion() throws InvalidPathException {
+
+        try {
+            System.out.print("\nDigite o caminho para o arquivo de texto: ");
+            String filePath = sc.nextLine();
+
+            System.out.print("\nDigite a pergunta que desejas adicionar: ");
+            String newQuestion = sc.nextLine();
+
+            questionController.registerQuestion(newQuestion,  filePath);
+        } catch (IOException e) {
+            throw new InvalidPathException();
+        } catch (InputMismatchException e) {
+            throw new InvalidInputException();
+        }
+    }
 
     public void deleteQuestion() {}
 

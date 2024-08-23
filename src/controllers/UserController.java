@@ -26,7 +26,7 @@ public class UserController {
                 System.out.println(count + "- " + user.getName());
                 count++;
             }
-            if (!user.getName().contains(name)) {
+            if (!(user.getName().contains(name))) {
                 System.out.println("Não há usuário com este nome.");
             }
         }

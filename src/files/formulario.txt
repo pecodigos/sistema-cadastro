@@ -2,3 +2,4 @@
 2 - Digite seu email de contato:
 3 - Digite sua idade:
 4 - Digite sua altura:
+5 - Qual tua cor favorita:

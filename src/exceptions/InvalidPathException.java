@@ -1,9 +1,10 @@
 package exceptions;
 
+import java.io.IOException;
 
-public class InvalidPathException extends Exception {
+public class InvalidPathException extends IOException {
 
     public InvalidPathException() {
-        super();
+        super("Caminho incorreto. Por favor, informe um caminho correto para o arquivo.");
     }
 }
