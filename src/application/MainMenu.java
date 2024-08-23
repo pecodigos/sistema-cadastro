@@ -1,5 +1,6 @@
 package application;
 
+import controllers.UserController;
 import entities.User;
 
 import java.io.*;
@@ -9,11 +10,12 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    public static void registerUser() {
-        Scanner sc = new Scanner(System.in);
 
-        List<String> questions = new ArrayList<>();
-        List<User> users = new ArrayList<>();
+    UserController userController = new UserController();
+    List<String> questions = new ArrayList<>();
+
+    public void registerUser() {
+        Scanner sc = new Scanner(System.in);
 
         System.out.print("\nDigite o caminho para o arquivo .txt: ");
         String filePath = sc.nextLine();
@@ -41,12 +43,12 @@ public class MainMenu {
             System.out.print(questions.get(3) + " ");
             double height = sc.nextDouble();
 
-            users.add(new User(name, email, age, height));
+            userController.registerUser(name, email, age, height);
 
             int count = 1;
             String outFile = fileParent + String.format("/out/%d-", count) + name.toUpperCase().replaceAll("\\s+", "") + ".txt";
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(outFile))) {
-                for (User user : users) {
+                for (User user : userController.listUsers()) {
                     bw.write("1 - " + user.getName() + "\n");
                     bw.write("2 - " + user.getEmail() + "\n");
                     bw.write("3 - " + user.getAge() + "\n");
@@ -55,17 +57,22 @@ public class MainMenu {
                 System.out.println("\nUsuário cadastrado com sucesso!");
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Invalid directory. You need to enter a valid path for your file.");
         }
     }
 
-    public static void listUsers() {
+    public void listUsers() {
+        int count = 1;
+        for (User user : userController.listUsers()) {
+            System.out.println(count + "- " + user.getName());
+            count++;
+        }
     }
+
+    public void searchUser() {}
 
     public void registerQuestion() {}
 
     public void deleteQuestion() {}
-
-    public void searchUser() {}
 
 }

@@ -6,6 +6,7 @@ public class RegisterApplication {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        MainMenu menu = new MainMenu();
 
         int n = 6;
         while (n != 0) {
@@ -17,9 +18,10 @@ public class RegisterApplication {
             n = sc.nextInt();
 
             if (n == 1) {
-                MainMenu.registerUser();
+                menu.registerUser();
+
             } else if (n == 2){
-                MainMenu.listUsers();
+                menu.listUsers();
             }
         }
         System.out.println("\nAté mais!");
