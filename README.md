@@ -1,2 +1,11 @@
-# sistema-cadastro
-Fazendo um sistema de cadastro, tentando consultar o menos possível qualquer material, na tentativa de fixar bem a sintaxe de Java e os conceitos que aprendi.
+## Sistema de cadastros
+
+### Inicialmente o usuário poderá:
+
+- Cadastrar um novo usuário;
+- Listar todos os usuários já cadastrados;
+- Cadastrar uma nova pergunta no formulário;
+- Deletar uma pergunta do formulário;
+- Pesquisar um usuário por nome, email ou idade.
+
+Será um aplicativo CLI.
