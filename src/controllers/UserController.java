@@ -20,15 +20,17 @@ public class UserController {
 
     public void searchUser(String name) {
         System.out.println("\nUsuários cadastrados com esse nome: ");
-        int count = 1;
+        int id = 1;
+        boolean userFound = false;
         for (User user : users) {
             if (user.getName().contains(name)) {
-                System.out.println(count + "- " + user.getName());
-                count++;
+                System.out.println(id + "- " + user.getName());
+                id++;
+                userFound = true;
             }
-            if (!(user.getName().contains(name))) {
-                System.out.println("Não há usuário com este nome.");
-            }
+        }
+        if (!userFound) {
+            System.out.println("Não há usuário com este nome.");
         }
     }
 }
