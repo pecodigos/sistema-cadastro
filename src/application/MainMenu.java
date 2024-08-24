@@ -59,17 +59,15 @@ public class MainMenu {
             String outFile = fileParent + String.format("/out/%d-", count) + name.toUpperCase().replaceAll("\\s+", "") + ".txt";
             count++;
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(outFile))) {
-                for (User user : userController.listUsers()) {
-                    bw.write("Nome: " + user.getName() + "\n");
-                    bw.write("Email: " + user.getEmail() + "\n");
-                    bw.write("Idade: " + user.getAge() + "\n");
-                    bw.write("Altura: " + user.getHeight() + "\n");
-                }
-                System.out.println("\nUsuário cadastrado com sucesso!");
+                bw.write("Nome: " + name + "\n");
+                bw.write("Email: " + email + "\n");
+                bw.write("Idade: " + age + "\n");
+                bw.write("Altura: " + height + "\n");
             }
         } catch (IOException e) {
             throw new InvalidPathException();
         }
+        System.out.println("\nUsuário cadastrado com sucesso!");
     }
 
     public void listUsers() {
