@@ -41,23 +41,31 @@ public class RegisterApplication {
                 }
             }
 
-            if (n == 1) {
-                menu.registerUser();
-            } else if (n == 2){
-                menu.listUsers();
-            } else if (n == 3) {
-                menu.searchUser();
-            } else if (n == 4) {
-                menu.registerQuestion();
-            } else if (n == 5) {
-                menu.deleteQuestion();
+            switch (n) {
+                case 1:
+                    menu.registerUser();
+                    break;
+                case 2:
+                    menu.listUsers();
+                    break;
+                case 3:
+                    menu.searchUser();
+                    break;
+                case 4:
+                    menu.registerQuestion();
+                    break;
+                case 5:
+                    menu.deleteQuestion();
+                    break;
+                default:
+                    System.out.println("Até mais!");
+                    break;
             }
 
             if (n != 0) {
                 n = -1;
             }
         }
-        System.out.println("Até mais!");
         sc.close();
     }
 }

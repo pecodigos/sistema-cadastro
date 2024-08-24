@@ -16,8 +16,11 @@ public class MainMenu {
 
     UserController userController = new UserController();
     QuestionController questionController = new QuestionController();
+
     List<String> questions = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
+
+    private int count = 1;
 
     public void registerUser() throws InvalidPathException {
 
@@ -53,8 +56,8 @@ public class MainMenu {
 
             userController.registerUser(name, email, age, height);
 
-            int count = 1;
             String outFile = fileParent + String.format("/out/%d-", count) + name.toUpperCase().replaceAll("\\s+", "") + ".txt";
+            count++;
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(outFile))) {
                 for (User user : userController.listUsers()) {
                     bw.write("Nome: " + user.getName() + "\n");

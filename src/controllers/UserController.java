@@ -23,7 +23,7 @@ public class UserController {
         int id = 1;
         boolean userFound = false;
         for (User user : users) {
-            if (user.getName().contains(name)) {
+            if (user.getName().startsWith(name)) {
                 System.out.println(id + "- " + user.getName());
                 id++;
                 userFound = true;
