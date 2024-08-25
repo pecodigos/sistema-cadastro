@@ -40,11 +40,25 @@ public class MainMenu {
 
             System.out.println("\nDigite os dados do novo usuário.");
 
-            System.out.print(questions.getFirst() + " ");
-            String name = sc.nextLine();
+            String name;
+            String email;
 
-            System.out.print(questions.get(1) + " ");
-            String email = sc.nextLine();
+            do {
+                System.out.print(questions.getFirst() + " ");
+                name = sc.nextLine();
+                if (name.trim().length() < 10) {
+                    System.out.println("Seu nome precisa ter no mínimo 10 caracteres, não incluindo espaços.\n");
+                }
+            } while (name.trim().length() < 10);
+
+            do {
+                System.out.print(questions.get(1) + " ");
+                email = sc.nextLine();
+                if (userController.listUsers().toString().contains(email) || !(email.contains("@"))) {
+                    System.out.println("\nEmail inválido ou já existente. Insira um email válido, por favor.\n");
+                }
+            } while (userController.listUsers().toString().contains(email) || !(email.contains("@")));
+
 
             System.out.print(questions.get(2) + " ");
             int age = sc.nextInt();

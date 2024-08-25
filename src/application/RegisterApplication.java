@@ -32,7 +32,7 @@ public class RegisterApplication {
                     n = sc.nextInt();
 
                     if (n > 5 || n < 0) {
-                        System.out.println("Você não digitou um número válido.");
+                        System.out.print("Você não digitou um número válido.");
                     }
                     System.out.println();
                     invalidInput = true;
